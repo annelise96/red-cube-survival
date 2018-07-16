@@ -4,25 +4,26 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     bool gameHasEnded = false;
-    float restartDelay = 1f;
+    public GameObject gameOverUI;
 
-	public void EndGame()
+    public void EndGame()
     {
         if(gameHasEnded == false)
         {
             gameHasEnded = true;
-            Invoke("Restart", restartDelay);
+            GameOver();
         }
 
-    }
-
-    void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public bool getGameHasEnded()
     {
         return gameHasEnded;
+    }
+
+    public void GameOver()
+    {        
+        gameOverUI.SetActive(true);
+        
     }
 }
